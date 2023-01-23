@@ -14,7 +14,7 @@ impl MsgSetContractMetadata {
     /// using WASM bindings.
     /// * **rewards_address** is an address to distribute rewards to (bech32 encoded).
     /// If not set (empty), rewards are not distributed for this contract.
-    pub fn set_contract_metadata(
+    pub fn new(
         sender_address: impl Into<String>,
         contract_address: impl Into<String>,
         owner_address: impl Into<String>,
@@ -36,10 +36,7 @@ impl MsgWithdrawRewards {
     /// * **rewards_address** is the address to distribute rewards to (bech32 encoded).
     /// * **records_limit** defines the maximum number of RewardsRecord objects to process.
     /// If provided limit is 0, the default limit is used.
-    pub fn withdraw_rewards_records_limit(
-        rewards_address: impl Into<String>,
-        records_limit: u64,
-    ) -> Self {
+    pub fn records_limit(rewards_address: impl Into<String>, records_limit: u64) -> Self {
         MsgWithdrawRewards {
             rewards_address: rewards_address.into(),
             mode: Some(Mode::RecordsLimit(RecordsLimit {
@@ -51,10 +48,7 @@ impl MsgWithdrawRewards {
     /// Helper function to define withraw rewards message with records limit mode.
     /// * **rewards_address** is the address to distribute rewards to (bech32 encoded).
     /// * **record_ids** defines specific RewardsRecord object IDs to process.
-    pub fn withdraw_rewards_record_ids(
-        rewards_address: impl Into<String>,
-        record_ids: Vec<u64>,
-    ) -> Self {
+    pub fn record_ids(rewards_address: impl Into<String>, record_ids: Vec<u64>) -> Self {
         MsgWithdrawRewards {
             rewards_address: rewards_address.into(),
             mode: Some(Mode::RecordIds(RecordIDs { ids: record_ids })),
