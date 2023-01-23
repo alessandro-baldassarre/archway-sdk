@@ -1,3 +1,0 @@
-[submodule "contracts/contracts-manager"]
-	path = contracts/contracts-manager
-	url = https://github.com/alessandro-baldassarre/contracts-manager
