@@ -2,8 +2,7 @@ mod pagination;
 mod query;
 
 #[cfg(not(target_arch = "wasm32"))]
-pub mod testing;
-
+// pub mod testing;
 pub use pagination::{PageRequest, PageResponse};
 pub use query::{ArchwayQuery, ContractMetadataResponse, RewardsRecord, RewardsRecordsResponse};
 
