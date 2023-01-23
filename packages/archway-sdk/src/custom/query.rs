@@ -1,7 +1,7 @@
 use cosmwasm_schema::cw_serde;
 use cosmwasm_std::CustomQuery;
 
-use crate::types::cosmosbasequeryv1beta1::PageRequest;
+use super::types::PageRequest;
 
 #[cw_serde]
 pub enum ArchwayQuery {
