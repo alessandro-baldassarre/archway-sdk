@@ -4,7 +4,18 @@ use crate::types::archwayrewardsv1beta1::{
     MsgWithdrawRewardsResponse,
 };
 
-impl MsgSetContractMetadata {
+pub enum ArchwayStargateMsg {
+    MsgSetContractMetadata {
+        sender_address: String,
+        metadata: Option<ContractMetadata>,
+    },
+    MsgWithdrawRewards {
+        rewards_address: String,
+        mode: Option<Mode>,
+    },
+}
+
+impl ArchwayStargateMsg {
     /// Helper function to define set contract metadata message
     /// * **sender_address**  is the msg sender address (bech32 encoded).
     /// * **contract_address** defines the contract address (bech32 encoded).
@@ -14,13 +25,13 @@ impl MsgSetContractMetadata {
     /// using WASM bindings.
     /// * **rewards_address** is an address to distribute rewards to (bech32 encoded).
     /// If not set (empty), rewards are not distributed for this contract.
-    pub fn new(
+    pub fn set_contract_metadata(
         sender_address: impl Into<String>,
         contract_address: impl Into<String>,
         owner_address: impl Into<String>,
         rewards_address: impl Into<String>,
     ) -> Self {
-        MsgSetContractMetadata {
+        ArchwayStargateMsg::MsgSetContractMetadata {
             sender_address: sender_address.into(),
             metadata: Some(ContractMetadata {
                 contract_address: contract_address.into(),
@@ -29,15 +40,13 @@ impl MsgSetContractMetadata {
             }),
         }
     }
-}
 
-impl MsgWithdrawRewards {
     /// Helper function to define withraw rewards message with records limit mode.
     /// * **rewards_address** is the address to distribute rewards to (bech32 encoded).
     /// * **records_limit** defines the maximum number of RewardsRecord objects to process.
     /// If provided limit is 0, the default limit is used.
-    pub fn records_limit(rewards_address: impl Into<String>, records_limit: u64) -> Self {
-        MsgWithdrawRewards {
+    pub fn withdraw_records_limit(rewards_address: impl Into<String>, records_limit: u64) -> Self {
+        ArchwayStargateMsg::MsgWithdrawRewards {
             rewards_address: rewards_address.into(),
             mode: Some(Mode::RecordsLimit(RecordsLimit {
                 limit: records_limit,
@@ -48,8 +57,8 @@ impl MsgWithdrawRewards {
     /// Helper function to define withraw rewards message with records limit mode.
     /// * **rewards_address** is the address to distribute rewards to (bech32 encoded).
     /// * **record_ids** defines specific RewardsRecord object IDs to process.
-    pub fn record_ids(rewards_address: impl Into<String>, record_ids: Vec<u64>) -> Self {
-        MsgWithdrawRewards {
+    pub fn withdraw_record_ids(rewards_address: impl Into<String>, record_ids: Vec<u64>) -> Self {
+        ArchwayStargateMsg::MsgWithdrawRewards {
             rewards_address: rewards_address.into(),
             mode: Some(Mode::RecordIds(RecordIDs { ids: record_ids })),
         }
