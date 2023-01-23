@@ -4,6 +4,7 @@ use crate::types::archwayrewardsv1beta1::{
     MsgWithdrawRewardsResponse,
 };
 
+// Implement messages to extend construct functionality
 impl MsgSetContractMetadata {
     /// Helper function to define set contract metadata message
     /// * **sender_address**  is the msg sender address (bech32 encoded).
