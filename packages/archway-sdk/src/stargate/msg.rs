@@ -46,7 +46,7 @@ impl MsgWithdrawRewards {
         }
     }
 
-    /// Helper function to define withraw rewards message with records limit mode.
+    /// Helper function to define withraw rewards message with records ids mode.
     /// * **rewards_address** is the address to distribute rewards to (bech32 encoded).
     /// * **record_ids** defines specific RewardsRecord object IDs to process.
     pub fn record_ids(rewards_address: impl Into<String>, record_ids: Vec<u64>) -> Self {
