@@ -7,6 +7,7 @@ edition = "2021"
 
 [dependencies]
 <<<<<<< HEAD
+<<<<<<< HEAD
 cosmwasm-std = { workspace = true }
 cosmwasm-schema = { workspace = true }
 schemars = { workspace = true }
@@ -14,10 +15,16 @@ serde = { workspace = true }
 thiserror = { workspace = true }
 =======
 cosmwasm-std = {version = "1.2.0", features = ["stargate"]}
+=======
+cosmwasm-std = {version = "1.2.0", features = ["stargate","staking"]}
+>>>>>>> parent of 44cb6a4 (Feat:add workspace dependencies)
 cosmwasm-schema = "1.2.0"
 schemars = "0.8.11"
 serde = { version = "1.0.152", default-features = false, features = ["derive"] }
 thiserror = { version = "1.0.38" }
+<<<<<<< HEAD
 >>>>>>> parent of 18097ff (Refactor:update mod query)
+=======
+>>>>>>> parent of 44cb6a4 (Feat:add workspace dependencies)
 prost = "0.11.6"
 prost-types = "0.11.6"
