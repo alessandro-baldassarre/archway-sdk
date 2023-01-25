@@ -1,9 +1,7 @@
 use std::marker::PhantomData;
 
-use cosmwasm_std::{
-    testing::{MockApi, MockQuerier, MockStorage},
-    OwnedDeps,
-};
+use cosmwasm_std::testing::{MockApi, MockQuerier, MockStorage};
+use cosmwasm_std::OwnedDeps;
 
 use crate::custom::query::ArchwayQuery;
 
